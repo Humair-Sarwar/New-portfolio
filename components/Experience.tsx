@@ -6,13 +6,22 @@ import { ExternalLink, Briefcase, Globe } from "lucide-react";
 
 const experiences = [
   {
+    company: "Veeivs",
+    role: "Front-End Developer",
+    period: "May 2026 — July 2026",
+    link: "https://www.veeivs.com/",
+    description: "Developed and optimized responsive, interactive user interfaces for a Human Resource Management System (HRMS) using React.js. Focused on building modular components, managing complex application state efficiently, and ensuring seamless front-end performance for core HR modules.",
+    stack: ["React.js", "NextJs", "Tailwind CSS", "Redux", "React Query", "JavaScript", "HTML5", "CSS3"],
+    isCurrent: false,
+  },
+  {
     company: "Eziline Software House Pvt Ltd",
     role: "Laravel Intern",
     period: "Dec 2025 — Mar 2026",
     link: "https://www.eziline.com/",
     description: "Intensive focus on MVC architecture and backend systems. Contributing to full-stack workflows and mastering Laravel's ecosystem for scalable applications.",
     stack: ["Laravel", "PHP", "Blade", "MySQL", "MVC"],
-    isCurrent: true,
+    isCurrent: false,
   },
   {
     company: "Afflictor-FZCO (Remote)",

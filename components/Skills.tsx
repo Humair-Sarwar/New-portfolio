@@ -2,129 +2,245 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { 
-  Layout, Server, Database, Layers, Globe, 
-  Cpu, Rocket, ShieldCheck, Zap 
+import {
+  Layout,
+  Server,
+  Database,
+  Sparkles,
+  Wrench,
+  Check,
 } from "lucide-react";
 
-// Sari skills aik hi list mein logical groups ke sath
-const skillGroups = [
+interface SkillCategory {
+  id: string;
+  title: string;
+  subtitle: string;
+  description: string;
+  icon: React.ReactNode;
+  skills: string[];
+  accent: string;
+}
+
+const skillCategories: SkillCategory[] = [
   {
-    title: "Modern Frontend",
-    icon: <Layout className="text-[#0066FF]" size={22} />,
-    skills: ["React 19", "Next.js 15", "TypeScript", "Redux", "HTML5", "CSS3"],
-    description: "Building high-performance, SEO-friendly interfaces with clean architecture.",
-    color: "from-blue-500/10",
+    id: "frontend",
+    title: "Frontend Development",
+    subtitle: "User Interfaces & Client Architecture",
+    description:
+      "Building responsive, accessible, and interactive web interfaces with modern component architectures and seamless API integration.",
+    icon: <Layout size={22} className="text-[#0066FF]" />,
+    skills: [
+      "JavaScript (ES6+)",
+      "React.js",
+      "Next.js",
+      "HTML5",
+      "CSS3",
+      "Tailwind CSS",
+      "Bootstrap",
+      "Responsive Web Design",
+      "API Integration",
+    ],
+    accent: "from-blue-500/10 to-transparent",
   },
   {
-    title: "Backend & Systems",
-    icon: <Server className="text-[#0066FF]" size={22} />,
-    skills: ["Laravel", "Node.js", "PHP", "Express", "MVC"],
-    description: "Designing robust server-side logic and scalable RESTful APIs.",
-    color: "from-indigo-500/10",
+    id: "backend",
+    title: "Backend Development",
+    subtitle: "Server-Side Logic & API Engineering",
+    description:
+      "Developing structured MVC applications, RESTful services, role-based authentication systems, and relational data models.",
+    icon: <Server size={22} className="text-[#0066FF]" />,
+    skills: [
+      "Node.js",
+      "Express.js",
+      "PHP",
+      "Laravel",
+      "RESTful APIs",
+      "MVC Architecture",
+      "Authentication and Authorization",
+      "Eloquent ORM",
+      "Middleware",
+    ],
+    accent: "from-indigo-500/10 to-transparent",
   },
   {
-    title: "Database Architecture",
-    icon: <Database className="text-[#0066FF]" size={22} />,
-    skills: ["PostgreSQL", "SQL (MySQL)", "MongoDB", "Database Design"],
-    description: "Managing data integrity and optimizing complex query performance.",
-    color: "from-cyan-500/10",
+    id: "ai-tools",
+    title: "AI Tools & AI-Assisted Development",
+    subtitle: "Modern AI-Augmented Engineering",
+    description:
+      "Leveraging intelligent coding environments and large language models to accelerate implementation, debugging, and iterative workflows.",
+    icon: <Sparkles size={22} className="text-[#0066FF]" />,
+    skills: [
+      "Claude Code",
+      "Google Antigravity",
+      "Google Gemini Pro",
+      "AI-Assisted Coding",
+      "Vibe Coding",
+      "AI-Powered Debugging",
+      "AI-Assisted Development Workflows",
+    ],
+    accent: "from-cyan-500/10 to-transparent",
   },
   {
-    title: "UI Frameworks",
-    icon: <Layers className="text-[#0066FF]" size={22} />,
-    skills: ["Tailwind CSS", "Material UI", "Bootstrap"],
-    description: "Creating responsive, mobile-first designs with modern UI/UX principles.",
-    color: "from-blue-400/10",
+    id: "databases",
+    title: "Databases",
+    subtitle: "Relational & Document Data Stores",
+    description:
+      "Designing normalized relational schemas and flexible NoSQL document collections for full-stack web applications.",
+    icon: <Database size={22} className="text-[#0066FF]" />,
+    skills: ["MySQL", "MongoDB"],
+    accent: "from-emerald-500/10 to-transparent",
   },
   {
-    title: "Specialized Tech",
-    icon: <Globe className="text-[#0066FF]" size={22} />,
-    skills: ["WordPress", "Trade-in Portals", "Admin Systems"],
-    description: "Delivering niche solutions for tech trade-in and resale platforms.",
-    color: "from-sky-500/10",
-  },
-  {
-    title: "Engineering Tools",
-    icon: <Cpu className="text-[#0066FF]" size={22} />,
-    skills: ["Git", "Docker", "REST APIs", "Clean Code"],
-    description: "Utilizing professional DevOps tools for seamless deployment workflows.",
-    color: "from-blue-600/10",
+    id: "dev-tools",
+    title: "Development Tools",
+    subtitle: "Version Control, API Testing & Environment",
+    description:
+      "Maintaining clean version control history, testing REST endpoints thoroughly, and managing PHP/JavaScript package ecosystems.",
+    icon: <Wrench size={22} className="text-[#0066FF]" />,
+    skills: ["Git", "GitHub", "Postman", "VS Code", "Composer"],
+    accent: "from-slate-500/10 to-transparent",
   },
 ];
 
-export default function Expertise() {
+export default function Skills() {
   return (
-    <section id="skills" className="py-20 px-6 bg-[#FFFFFF] relative overflow-hidden">
-      {/* Background Decorative Gradients */}
-      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-50/50 blur-[140px] rounded-full pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-blue-50/40 blur-[100px] rounded-full pointer-events-none" />
-
-      <div className="max-w-7xl mx-auto">
+    <section
+      id="skills"
+      className="py-24 px-5 sm:px-6 lg:px-8 bg-white relative overflow-hidden"
+    >
+      <div className="max-w-7xl mx-auto relative z-10">
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-24">
-          <div className="space-y-6">
-            <motion.div 
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              className="flex items-center gap-3"
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
+          <div className="max-w-2xl">
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-200/60 mb-4"
             >
-               <div className="w-10 h-[2px] bg-[#0066FF]" />
-               <span className="text-[#0066FF] font-black text-[11px] uppercase tracking-[0.5em]">My Tech Stack</span>
+              <span className="w-2 h-2 rounded-full bg-[#0066FF]" />
+              <span className="text-[#0066FF] font-bold text-xs uppercase tracking-widest">
+                Technical Skills
+              </span>
             </motion.div>
-            <h2 className="text-7xl md:text-[100px] font-[1000] text-slate-900 tracking-[-0.06em] leading-[0.85]">
-              Expertise<span className="text-[#0066FF]">.</span>
-            </h2>
+
+            <motion.h2
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.05 }}
+              className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-950 tracking-tight leading-[1.12]"
+            >
+              Technologies &amp; Tools I Use{" "}
+              <span className="text-[#0066FF]">in Production.</span>
+            </motion.h2>
           </div>
-          <p className="text-slate-500 max-w-sm text-lg font-medium leading-snug">
-            Professional workflow and clean code architecture honed at <span className="text-slate-900">DoneSol Technologies</span> & <span className="text-slate-900">Eziline</span>.
+
+          <p className="text-slate-600 max-w-md text-sm sm:text-base leading-relaxed">
+            Organized across frontend, backend, databases, AI-assisted
+            workflows, and core developer tooling—focused strictly on
+            technologies I actively build with.
           </p>
         </div>
 
-        {/* Unified Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {skillGroups.map((group, i) => (
+        {/* Top 3 Major Categories */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
+          {skillCategories.slice(0, 3).map((category, index) => (
             <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 30 }}
+              key={category.id}
+              initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.1, duration: 0.6 }}
-              className="group relative p-10 rounded-[3rem] bg-[#F8FAFC] border border-slate-100 transition-all duration-700 hover:bg-white hover:shadow-[0_40px_80px_-20px_rgba(0,102,255,0.12)] hover:border-[#0066FF]/20"
+              transition={{ delay: index * 0.08, duration: 0.5 }}
+              className="group relative rounded-3xl bg-slate-50/90 border border-slate-200/80 p-7 sm:p-8 hover:bg-white hover:border-[#0066FF]/30 hover:shadow-xl hover:shadow-blue-500/[0.06] transition-all duration-300 flex flex-col justify-between overflow-hidden"
             >
-              {/* Subtle Color Glow */}
-              <div className={`absolute inset-0 bg-gradient-to-br ${group.color} to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 rounded-[3rem]`} />
+              <div
+                className={`absolute inset-0 bg-gradient-to-br ${category.accent} opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none`}
+              />
 
               <div className="relative z-10">
-                {/* Icon Box */}
-                <div className="mb-8 flex items-center justify-between">
-                  <div className="w-14 h-14 rounded-2xl bg-white shadow-sm flex items-center justify-center border border-slate-50 group-hover:bg-[#0066FF] group-hover:text-white transition-all duration-500">
-                    <div className="group-hover:text-white transition-colors duration-500">
-                      {group.icon}
-                    </div>
+                <div className="flex items-center justify-between gap-4 mb-6">
+                  <div className="w-12 h-12 rounded-2xl bg-white border border-slate-200/80 shadow-xs flex items-center justify-center group-hover:border-blue-200 transition-colors">
+                    {category.icon}
                   </div>
-                  <Zap size={16} className="text-slate-200 group-hover:text-[#0066FF]/30 transition-colors" />
+                  <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-slate-400 bg-white px-3 py-1 rounded-full border border-slate-200/70">
+                    {category.skills.length} Skills
+                  </span>
                 </div>
 
-                <h3 className="text-[10px] font-black text-[#0066FF] uppercase tracking-[0.25em] mb-4">
-                  {group.title}
-                </h3>
-                
-                <p className="text-2xl font-bold text-slate-900 mb-8 tracking-tight leading-tight">
-                  {group.description}
+                <p className="text-xs font-bold uppercase tracking-wider text-[#0066FF] mb-1">
+                  {category.subtitle}
                 </p>
+                <h3 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight mb-3">
+                  {category.title}
+                </h3>
+                <p className="text-sm text-slate-600 leading-relaxed mb-6">
+                  {category.description}
+                </p>
+              </div>
 
-                {/* Skills Chips */}
-                <div className="flex flex-wrap gap-2">
-                  {group.skills.map((skill) => (
-                    <span 
-                      key={skill} 
-                      className="text-[9px] font-[900] uppercase tracking-widest text-slate-400 border border-slate-200/60 px-3 py-1.5 rounded-xl bg-white/50 group-hover:text-slate-900 group-hover:border-[#0066FF]/20 transition-all duration-500"
-                    >
-                      {skill}
-                    </span>
-                  ))}
+              <div className="relative z-10 flex flex-wrap gap-2 pt-4 border-t border-slate-200/70">
+                {category.skills.map((skill) => (
+                  <span
+                    key={skill}
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold bg-white text-slate-800 border border-slate-200/90 group-hover:border-blue-200/90 transition-colors shadow-2xs"
+                  >
+                    <Check size={12} className="text-[#0066FF] shrink-0" />
+                    <span>{skill}</span>
+                  </span>
+                ))}
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Bottom 2 Categories (Databases & Development Tools) */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          {skillCategories.slice(3).map((category, index) => (
+            <motion.div
+              key={category.id}
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: (index + 3) * 0.08, duration: 0.5 }}
+              className="group relative rounded-3xl bg-slate-50/90 border border-slate-200/80 p-7 sm:p-8 hover:bg-white hover:border-[#0066FF]/30 hover:shadow-xl hover:shadow-blue-500/[0.06] transition-all duration-300 flex flex-col justify-between overflow-hidden"
+            >
+              <div
+                className={`absolute inset-0 bg-gradient-to-br ${category.accent} opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none`}
+              />
+
+              <div className="relative z-10 flex flex-col sm:flex-row sm:items-start justify-between gap-6 mb-6">
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 rounded-2xl bg-white border border-slate-200/80 shadow-xs flex items-center justify-center shrink-0 group-hover:border-blue-200 transition-colors">
+                    {category.icon}
+                  </div>
+                  <div>
+                    <p className="text-xs font-bold uppercase tracking-wider text-[#0066FF] mb-1">
+                      {category.subtitle}
+                    </p>
+                    <h3 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight mb-2">
+                      {category.title}
+                    </h3>
+                    <p className="text-sm text-slate-600 leading-relaxed max-w-lg">
+                      {category.description}
+                    </p>
+                  </div>
                 </div>
+                <span className="self-start text-[11px] font-mono font-bold uppercase tracking-wider text-slate-400 bg-white px-3 py-1 rounded-full border border-slate-200/70 shrink-0">
+                  {category.skills.length} Skills
+                </span>
+              </div>
+
+              <div className="relative z-10 flex flex-wrap gap-2.5 pt-4 border-t border-slate-200/70">
+                {category.skills.map((skill) => (
+                  <span
+                    key={skill}
+                    className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-bold bg-white text-slate-800 border border-slate-200/90 group-hover:border-blue-200/90 transition-colors shadow-2xs"
+                  >
+                    <Check size={12} className="text-[#0066FF] shrink-0" />
+                    <span>{skill}</span>
+                  </span>
+                ))}
               </div>
             </motion.div>
           ))}

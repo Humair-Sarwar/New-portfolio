@@ -9,7 +9,6 @@ import {
   Sparkles,
   Code2,
   Server,
-  Layers,
   CheckCircle2,
 } from "lucide-react";
 
@@ -196,100 +195,96 @@ export default function Hero() {
             </motion.div>
           </motion.div>
 
-          {/* Right Column: Developer Visual & Multi-Stack Card */}
+          {/* Right Column: Executive Portrait & Multi-Stack Showcase */}
           <motion.div
             className="lg:col-span-5"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
           >
-            <div className="relative mx-auto max-w-md lg:max-w-none">
+            <div className="relative mx-auto max-w-sm sm:max-w-md lg:max-w-none">
               {/* Ambient Glow */}
-              <div className="absolute -inset-2 bg-gradient-to-tr from-[#0066FF]/20 via-indigo-500/10 to-cyan-400/20 rounded-[2.5rem] blur-2xl opacity-70 pointer-events-none" />
+              <div className="absolute -inset-3 bg-gradient-to-tr from-[#0066FF]/20 via-indigo-500/10 to-cyan-400/20 rounded-[2.5rem] blur-2xl opacity-80 pointer-events-none" />
 
-              {/* Main Card Container */}
-              <div className="relative bg-slate-950 rounded-[2rem] border border-slate-800 p-5 sm:p-6 shadow-2xl text-white overflow-hidden">
-                {/* Window Header Bar */}
-                <div className="flex items-center justify-between pb-4 mb-5 border-b border-slate-800/80">
-                  <div className="flex items-center gap-2">
-                    <span className="w-3 h-3 rounded-full bg-rose-500/80" />
-                    <span className="w-3 h-3 rounded-full bg-amber-400/80" />
-                    <span className="w-3 h-3 rounded-full bg-emerald-500/80" />
-                  </div>
-                  <span className="text-[11px] font-mono text-slate-400">
-                    humair-sarwar.stack.ts
-                  </span>
-                  <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-[#0066FF]/20 text-blue-400 border border-blue-500/30">
-                    Production Ready
-                  </span>
-                </div>
-
-                {/* Developer Visual Banner */}
-                <div className="relative h-52 sm:h-56 rounded-2xl overflow-hidden mb-5 border border-slate-800">
+              {/* Portrait Frame Card */}
+              <div className="relative bg-white rounded-[2.25rem] border border-slate-200/90 p-3.5 sm:p-4 shadow-2xl shadow-blue-950/10">
+                <div className="relative aspect-[4/4.6] rounded-[1.75rem] overflow-hidden bg-slate-100 border border-slate-200/60 group">
                   <img
-                    src="/full-stack.jpg"
-                    alt="Humair Sarwar – Full Stack Web Developer workspace illustration"
-                    className="w-full h-full object-cover object-center"
+                    src="/humair-profile.jpg"
+                    alt="Humair Sarwar – Full Stack Web Developer"
+                    className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-[1.03]"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/35 to-transparent" />
-                  <div className="absolute bottom-3.5 left-4 right-4 flex items-end justify-between gap-2">
+
+                  {/* Subtle Bottom Gradient for Identity Overlay */}
+                  <div className="absolute inset-x-0 bottom-0 h-36 bg-gradient-to-t from-slate-950/90 via-slate-950/45 to-transparent" />
+
+                  {/* Top-Left Status Badge */}
+                  <div className="absolute top-4 left-4 px-3.5 py-1.5 rounded-full bg-white/90 backdrop-blur-md border border-white/60 shadow-sm flex items-center gap-2">
+                    <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                    <span className="text-[11px] font-bold text-slate-900">
+                      Available for Projects
+                    </span>
+                  </div>
+
+                  {/* Bottom Identity & Stack Overlay inside Portrait */}
+                  <div className="absolute bottom-4 left-4 right-4 text-white flex items-end justify-between gap-3">
                     <div>
-                      <p className="text-[11px] font-mono uppercase tracking-wider text-blue-400 font-semibold">
-                        Full-Cycle Engineering
+                      <p className="text-[11px] font-mono uppercase tracking-widest text-blue-400 font-bold">
+                        Islamabad, Pakistan
                       </p>
-                      <p className="text-sm sm:text-base font-bold text-white">
-                        Frontend UI to Backend APIs &amp; Databases
+                      <p className="text-lg font-black tracking-tight text-white leading-tight">
+                        Humair Sarwar
+                      </p>
+                      <p className="text-xs text-slate-300 font-medium">
+                        Full Stack &amp; AI-Assisted Developer
                       </p>
                     </div>
+                    <span className="px-3 py-1 rounded-xl bg-[#0066FF] text-white text-[11px] font-bold shadow-sm shrink-0">
+                      3+ Yrs Exp
+                    </span>
                   </div>
                 </div>
 
-                {/* Authentic Multi-Stack Capability Rows */}
-                <div className="space-y-2.5">
-                  <div className="flex items-center justify-between p-3 rounded-xl bg-slate-900/90 border border-slate-800/90">
-                    <div className="flex items-center gap-3">
-                      <div className="w-9 h-9 rounded-lg bg-blue-500/15 border border-blue-500/30 flex items-center justify-center text-blue-400">
-                        <Code2 size={18} />
+                {/* Bottom Multi-Stack Strip */}
+                <div className="mt-3.5 grid grid-cols-3 gap-2">
+                  <div className="p-2.5 rounded-2xl bg-slate-50 border border-slate-200/70 flex items-center gap-2">
+                    <div className="w-8 h-8 rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center text-[#0066FF] shrink-0">
+                      <Code2 size={16} />
+                    </div>
+                    <div className="min-w-0">
+                      <div className="text-[10px] font-bold uppercase tracking-wider text-slate-400">
+                        Frontend
                       </div>
-                      <div>
-                        <div className="text-xs font-bold text-white">
-                          Frontend Engineering
-                        </div>
-                        <div className="text-[11px] text-slate-400">
-                          React.js, Next.js, JavaScript (ES6+), Tailwind CSS
-                        </div>
+                      <div className="text-xs font-extrabold text-slate-900 truncate">
+                        React &amp; Next
                       </div>
                     </div>
                   </div>
 
-                  <div className="flex items-center justify-between p-3 rounded-xl bg-slate-900/90 border border-slate-800/90">
-                    <div className="flex items-center gap-3">
-                      <div className="w-9 h-9 rounded-lg bg-indigo-500/15 border border-indigo-500/30 flex items-center justify-center text-indigo-400">
-                        <Server size={18} />
+                  <div className="p-2.5 rounded-2xl bg-slate-50 border border-slate-200/70 flex items-center gap-2">
+                    <div className="w-8 h-8 rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center text-[#0066FF] shrink-0">
+                      <Server size={16} />
+                    </div>
+                    <div className="min-w-0">
+                      <div className="text-[10px] font-bold uppercase tracking-wider text-slate-400">
+                        Backend
                       </div>
-                      <div>
-                        <div className="text-xs font-bold text-white">
-                          Backend &amp; Databases
-                        </div>
-                        <div className="text-[11px] text-slate-400">
-                          Laravel, PHP, Node.js, Express.js, MySQL, MongoDB
-                        </div>
+                      <div className="text-xs font-extrabold text-slate-900 truncate">
+                        Laravel &amp; Node
                       </div>
                     </div>
                   </div>
 
-                  <div className="flex items-center justify-between p-3 rounded-xl bg-gradient-to-r from-blue-600/20 to-indigo-600/15 border border-blue-500/30">
-                    <div className="flex items-center gap-3">
-                      <div className="w-9 h-9 rounded-lg bg-[#0066FF] flex items-center justify-center text-white">
-                        <Layers size={18} />
+                  <div className="p-2.5 rounded-2xl bg-blue-50/70 border border-blue-200/70 flex items-center gap-2">
+                    <div className="w-8 h-8 rounded-xl bg-[#0066FF] flex items-center justify-center text-white shrink-0">
+                      <Sparkles size={16} />
+                    </div>
+                    <div className="min-w-0">
+                      <div className="text-[10px] font-bold uppercase tracking-wider text-[#0066FF]">
+                        Workflow
                       </div>
-                      <div>
-                        <div className="text-xs font-bold text-white">
-                          AI-Assisted Development
-                        </div>
-                        <div className="text-[11px] text-blue-200">
-                          Claude Code, Google Antigravity &amp; Gemini Pro
-                        </div>
+                      <div className="text-xs font-extrabold text-slate-900 truncate">
+                        AI-Assisted
                       </div>
                     </div>
                   </div>

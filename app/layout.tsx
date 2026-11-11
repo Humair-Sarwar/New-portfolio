@@ -44,9 +44,9 @@ export const metadata: Metadata = {
     siteName: "Humair Sarwar Portfolio",
     images: [
       {
-        url: "/full-stack.jpg",
-        width: 1200,
-        height: 630,
+        url: "/humair-profile.jpg",
+        width: 1024,
+        height: 1024,
         alt: "Humair Sarwar – Full Stack Web Developer",
       },
     ],
@@ -56,7 +56,7 @@ export const metadata: Metadata = {
     title: "Humair Sarwar | Full Stack Web Developer | React.js, Next.js & Laravel",
     description:
       "Full Stack Web Developer specializing in React.js, Next.js, Node.js, PHP, Laravel, REST APIs, and AI-assisted software development.",
-    images: ["/full-stack.jpg"],
+    images: ["/humair-profile.jpg"],
   },
   robots: {
     index: true,
